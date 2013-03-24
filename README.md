@@ -1,38 +1,51 @@
 ArchTrace
 =========
 
-An Architecture-based Traceability System
+Traditional techniques of traceability detection and management are
+not equipped to handle evolution. This is a problem for the field
+of software architecture, where it is critical to keep synchronized
+an evolving conceptual architecture with its realization in an
+evolving code base. ArchTrace is a new tool that addresses this
+problem through a policy-based infrastructure for automatically
+updating traceability links every time an architecture or its code
+base evolves. ArchTrace is pluggable, allowing developers to choose
+a set of traceability management policies that best match their
+situational needs and working styles.
 
-Copyright (c) 2004 Regents of the University of California.
-Copyright (c) 2004 COPPE/UFRJ.
-Copyright (c) 2013 IC/UFF.
+Please, read the following papers to find more information about
+ArchTrace:
+
+* [MURTA, L. G. P.; VAN DER HOEK, A.; WERNER, C. M. L.; "Continuous and Automated Evolution of Architecture-to-Implementation Traceability Links". Automated Software Engineering: An International Journal, volume 15, issue 1, pages 75-107, 2008.](http://dx.doi.org/10.1007/s10515-007-0020-6)
+* [MURTA, L. G. P.; VAN DER HOEK, A.; WERNER, C. M. L.; "ArchTrace: Policy-Based Support for Managing Evolving Architecture-to-Implementation Traceability Links". International Conference on Automated Software Engineering (ASE), Tokyo, pages 135-144, 2006.](http://dx.doi.org/10.1109/ASE.2006.16)
+* [MURTA, L. G. P.; VAN DER HOEK, A.; WERNER, C. M. L.; "ArchTrace: A Tool for Keeping in Sync Architecture and its Implementation". Tools Session of the Brazilian Symposium on Software Engineering (SBES), Florianopolis, pages 127-132, 2006.](http://www2.ic.uff.br/~leomurta/papers/murta2006.pdf)
+
+Copyright (c) 2004 Regents of the University of California.  
+Copyright (c) 2004 COPPE/UFRJ.  
+Copyright (c) 2013 IC/UFF.  
 All rights reserved.
 
 Authors
-=======
+-------
 
-Leonardo Gresta Paulino Murta
-(leomurta@ic.uff.br)
+* Leonardo Gresta Paulino Murta (leomurta@ic.uff.br)
 
-Andre van der Hoek
-(andre@ics.uci.edu)
+* Andre van der Hoek (andre@ics.uci.edu)
 
-Claudia Maria Lima Werner
-(werner@cos.ufrj.br)
+* Claudia Maria Lima Werner (werner@cos.ufrj.br)
 
 Included software
-=================
+-----------------
 
-ArchStudio, Menage, xArchLibs
-Copyright (c) 2000-2004 Regents of the University of California.
+ArchStudio, Menage, xArchLibs  
+Copyright (c) 2000-2004 Regents of the University of California.  
 All rights reserved.
 
-Subversion
-Copyright (c) 2000-2004 CollabNet.
+Subversion  
+Copyright (c) 2000-2004 CollabNet.  
 All rights reserved.
 
 License terms
-=============
+-------------
 
 Redistribution and use in source and binary forms are permitted
 provided that the above copyright notice and this paragraph are
