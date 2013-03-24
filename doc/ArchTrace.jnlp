@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- JNLP File for ArchTrace --> 
+<jnlp spec="1.0+" codebase="http://www.ics.uci.edu/~murta/ArchTrace" href="ArchTrace.jnlp">
+
+    <information>
+        <title>ArchTrace</title> 
+        <vendor>ICS/UCI & COPPE/UFRJ</vendor> 
+        <homepage href="http://www.cos.ufrj.br/~odyssey/scm"/>
+        <description>Architecture-based Traceability System</description>
+        <!-- <icon href="http://lens.cos.ufrj.br/odyssey/logo.gif"/> --> 
+        <offline-allowed/>
+    </information>
+
+    <security> 
+        <all-permissions/> 
+    </security> 
+
+	<resources> 
+		<j2se version="1.5+" max-heap-size="512M"/> 
+		<jar href="ArchTrace.jar" main="true"/>
+		<jar href="archstudio-3.0.1050.jar"/>
+		<jar href="xarchlibs-unstable.20040903.0945.jar"/>
+		<jar href="svnjavahl-1.1.0.jar"/>
+    </resources>
+    
+    <resources os="Windows"> 
+    	<nativelib href="svnjavahl-win32-1.1.0.jar"/> 
+    </resource> 
+    
+	<application-desc/>
+
+</jnlp> 

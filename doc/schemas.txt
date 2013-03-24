@@ -1,0 +1,236 @@
+http://www.isr.uci.edu/projects/xarchuci/ext-overview.html
+
+xArch
+	* any (element)
+
+archInstance (http://www.isr.uci.edu/architecture/xarch/diagrams/instance.png)
+	description
+
+	* componentInstance
+		descriprion
+		* interfaceInstance
+			description
+			direction
+			identifier
+		subArchitecture
+			archInstance [RECURSION]
+			* interfaceInstanceMapping
+				2 XMLLink
+		identifier
+		+ XMLLink structure (types:prescribedComponentInstance)
+
+
+	* connectorInstance
+		descriprion
+		* interfaceInstance
+			description
+			direction
+			identifier
+			+ XMLLink structure (types:prescribedInterfaceInstance)
+		subArchitecture
+			archInstance [RECURSION]
+			* interfaceInstanceMapping
+				2 XMLLink
+		identifier
+		+ XMLLink structure (types:prescribedConnectorInstance)
+
+	* linkInstance
+		description
+		2 point
+			XMLLink
+		identifier
+		+ XMLLink structure (types:prescribedLinkInstance)
+
+	* group
+		description
+		* XMLLink
+		identifier
+
+	identifier
+
+archStructure (http://www.isr.uci.edu/projects/xarchuci/images/diagrams/archStructure.png)
+	description
+
+	* component
+		description
+		* interface
+			description
+			direction
+			XMLLink type
+			XMLLink signature
+			identifier
+			+ optional (options:optionalComponent)
+				guard [ABSTRACT]
+		XMLLink type
+		identifier
+		+ optional (options:optionalComponent)
+			guard [ABSTRACT]
+
+	* conector
+		description
+		* interface
+			description
+			direction
+			XMLLink type
+			XMLLink signature
+			identifier
+			+ optional (options:optionalComponent)
+				guard [ABSTRACT]
+		XMLLink type
+		identifier
+		+ optional (options:optionalComponent)
+			guard [ABSTRACT]
+
+	* link
+		description
+		2 archInstance:point
+		identifier
+		+ optional (options:optionalComponent)
+			guard [ABSTRACT]
+
+	* archInstance:group
+
+	identifier
+
+archTypes (http://www.isr.uci.edu/projects/xarchuci/images/diagrams/archTypes.png)
+	* componentType
+		description
+		* signature
+			description
+			direction
+			XMLLink interfaceType
+			identifier
+			+ optional (options:optionalComponent)
+				guard [ABSTRACT]
+		subArchitecture
+			XMLLink archStructure
+			* signatureInterfaceMapping
+				description
+				XMLLink outerSignature
+				XMLLink innerInterface
+				identifier
+				+ optional (options:optionalComponent)
+					guard [ABSTRACT]
+		identifier
+		+ * variant (variants:variantComponentType)
+			guard
+			XMLLink variantType
+		+ * implementation [ABSTRACT] (implementation:variantComponentTypeImpl)
+			+ mainClass (javaImpl:javaImplementation)
+				javaClassName
+				XMLLink url
+			+ * auxClass (javaImpl:javaImplementation)
+			+ * javaSourceFile (javasourcecode:JavaSourceCodeImplementation)
+				repositoryLocation (javasourcecode:JavaSourceCodeImplementation)
+					XMLLink url
+					string fileName
+					string path
+				string fileName
+				string path				
+			+ * repositoryLocation (javasourcecode:JavaSourceCodeImplementation)
+				XMLLink url
+				string fileName
+				string path
+			+ * javaSourceCodeManager (javasourcecode:JavaSourceCodeImplementation) [ABSTRACT]
+				+ string eclipseProjectName (sourcecodeeclipse:eclipseSourceCodeManager)
+				+ string eclipseProjectID (sourcecodeeclipse:eclipseSourceCodeManager)
+				
+		+ XMLLink versionGraphNode (versions:variantComponentTypeImplVers)
+		
+	* connectorType
+		description
+		* signature
+			description
+			direction
+			XMLLink interfaceType
+			identifier
+			+ optional (options:optionalComponent)
+				guard [ABSTRACT]
+		subArchitecture
+			XMLLink archStructure
+			* signatureInterfaceMapping
+				description
+				XMLLink outerSignature
+				XMLLink innerInterface
+				identifier
+				+ optional (options:optionalComponent)
+					guard [ABSTRACT]
+		identifier
+		+ * variant (variants:variantConnectorType)
+			guard
+			XMLLink variantType
+		+ * implementation [ABSTRACT] (implementation:variantConnectorTypeImpl)
+			+ mainClass (javaImpl:javaImplementation)
+				javaClassName
+				XMLLink url
+			+ * auxClass (javaImpl:javaImplementation)
+			+ * javaSourceFile (javasourcecode:JavaSourceCodeImplementation)
+				repositoryLocation (javasourcecode:JavaSourceCodeImplementation)
+					XMLLink url
+					string fileName
+					string path
+				string fileName
+				string path				
+			+ * repositoryLocation (javasourcecode:JavaSourceCodeImplementation)
+				XMLLink url
+				string fileName
+				string path
+			+ * javaSourceCodeManager (javasourcecode:JavaSourceCodeImplementation) [ABSTRACT]
+				+ string eclipseProjectName (sourcecodeeclipse:eclipseSourceCodeManager)
+				+ string eclipseProjectID (sourcecodeeclipse:eclipseSourceCodeManager)
+		+ XMLLink versionGraphNode (versions:variantConnectorTypeImplVers)
+
+	* interfaceType
+		description
+		identifier
+		+ * implementation [ABSTRACT] (implementation:InterfaceTypeImpl)
+			+ mainClass (javaImpl:javaImplementation)
+				javaClassName
+				XMLLink url
+			+ * auxClass (javaImpl:javaImplementation)
+			+ * javaSourceFile (javasourcecode:JavaSourceCodeImplementation)
+				repositoryLocation (javasourcecode:JavaSourceCodeImplementation)
+					XMLLink url
+					string fileName
+					string path
+				string fileName
+				string path				
+			+ * repositoryLocation (javasourcecode:JavaSourceCodeImplementation)
+				XMLLink url
+				string fileName
+				string path
+			+ * javaSourceCodeManager (javasourcecode:JavaSourceCodeImplementation) [ABSTRACT]
+				+ string eclipseProjectName (sourcecodeeclipse:eclipseSourceCodeManager)
+				+ string eclipseProjectID (sourcecodeeclipse:eclipseSourceCodeManager)
+		+ XMLLink versionGraphNode (versions:interfaceTypeImplVers)
+
+archVersions (http://www.isr.uci.edu/projects/xarchuci/ext/versions.xsd)
+	* componentTypeVersionGraph
+		description
+		node
+			versionID
+			* XMLLink parent
+			identifier
+			immutable
+		identifier
+	
+	* connectorTypeVersionGraph
+		description
+		node
+			versionID
+			* XMLLink parent
+			identifier
+			immutable
+		identifier
+	
+	* interfaceTypeVersionGraph
+		description
+		node
+			versionID
+			* XMLLink parent
+			identifier
+			immutable
+		identifier
+
+TYPES
+

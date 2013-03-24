@@ -1,0 +1,28 @@
+HIGH PRIORITY:
+
+MEDIUM PRIORITY:
+
+LOW PRIORITY:
+
+WORKING ON:
+
+TO DO:
+
+NEXT STEPS:
+
+TO DO IN BRAZIL:
+- Code vesion graphs as organizational elements in the left tree
+- Code awareness of older/new version selected (arrows up and down)
+- Performance optimizations
+- publisher/subscriber model for the CM notification
+
+BUGS TO FIX:
+- Repository class can not assume sequential configuration (no?).
+- When I delete a directory the ArchTrace do not represent the next configuration without the directory
+- The check-in with a delete is not returning the next configuration number...
+- It is locking after a check-out/check-in...
+
+IDEAS:
+- Increase awareness related to policy messages
+- Define the type of the trace (requirements, source-code, etc.)
+- Put some awareness informing if all traces are related to the same configuration (necessary condition to perform check-out)

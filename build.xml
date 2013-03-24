@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2004 (c) Odyssey Project (http://www.cos.ufrj.br/odyssey). -->
+
+<project basedir="." default="test" name="ArchTrace">    
+
+    <!-- PROPERTIES -->
+    <property file="${basedir}/build.properties"/>
+
+    <!-- CLASSPATH -->
+    <path id="class.path">
+    	<pathelement path="${build.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${test.lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+    
+    <!-- INIT TARGET -->
+    <target name="init">    
+	    <mkdir dir="${src.dir}"/>
+        <mkdir dir="${resource.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+        <mkdir dir="${doc.dir}"/>
+        <mkdir dir="${javadoc.dir}"/>
+        <mkdir dir="${test.src.dir}"/>
+        <mkdir dir="${test.resource.dir}"/>
+        <mkdir dir="${test.lib.dir}"/>
+        <mkdir dir="${build.dir}"/>
+    </target>
+    
+    <!-- PREPARE TARGET -->
+    <target name="prepare" depends="init">
+		<copy todir="${build.dir}">
+			<fileset dir="${resource.dir}">
+				<exclude name="**/CVS"/>
+    		</fileset>
+  		</copy>
+    </target>
+
+    <!-- PREPARE TEST TARGET -->
+    <target name="prepareTest" depends="prepare">
+		<copy todir="${build.dir}/resource">
+			<fileset dir="${test.resource.dir}">
+				<exclude name="**/CVS"/>
+    		</fileset>
+  		</copy>
+    </target>
+    
+    <!-- COMPILE TARGET -->
+    <target name="compile" depends="prepare">
+        <javac classpathref="class.path" srcdir="${src.dir}" destdir="${build.dir}" optimize="true" debug="off" />
+    </target>
+    
+    <!-- COMPILE TEST TARGET -->
+    <target name="compileTest" depends="prepareTest">
+        <javac classpathref="class.path" srcdir="${src.dir}:${test.src.dir}" destdir="${build.dir}" optimize="false" debug="on">
+        	<compilerarg value="-Xlint:unchecked"/>
+		</javac>
+    </target>
+
+    <!-- REBUILD TARGET -->
+    <target name="rebuild" depends="clean,compile" />
+    
+    <!-- REBUILD TEST TARGET -->
+    <target name="rebuildTest" depends="clean,compileTest" />
+
+	<!-- TEST TARGET -->
+    <target name="test" depends="compileTest">
+        <junit printsummary="true" showoutput="true" fork="true">
+            <jvmarg value="${jvm.arg.test}"/>
+            <classpath refid="class.path" />
+            <formatter type="xml"/>
+            <test name="${test.main.class}" todir="${build.dir}" />
+        </junit>
+    </target>
+
+	<!-- RUN TARGET -->
+    <target name="run" depends="compile">
+		<java classpathref="class.path" classname="${main.class}" fork="true" >
+			<jvmarg value="${jvm.arg}"/>
+		</java>
+    </target>
+	
+	<!-- RUN ARCHSTUDIO TARGET -->
+    <target name="run ArchStudio" depends="compile">
+		<java classpathref="class.path" classname="${main.class.archstudio}" fork="true" >
+			<jvmarg value="${jvm.arg}"/>
+		</java>
+    </target>
+
+
+	<!-- JAR TARGET -->
+    <target name="jar" depends="rebuild" description="Generates a jar file.">
+        <jar destfile="${build.dir}/${ant.project.name}.jar" basedir="${build.dir}">
+			<manifest>
+            	<attribute name="Main-Class" value="${main.class}" />
+				<attribute name="Class-Path" value="${libs}" />
+        	</manifest>
+        </jar>
+    </target>
+        
+    <!-- SIGNJAR TARGET -->
+	<target name="signjar" depends="jar">
+		<signjar alias="COPPE" jar="${build.dir}/${ant.project.name}.jar" keystore="${doc.dir}/COSKS" storepass="odyss%98" /> 
+	</target>
+
+    <!-- DEPLOY TARGET -->
+	<target name="deploy" depends="signjar">
+		<scp file="${build.dir}/${ant.project.name}.jar" todir="${user.name}@${deploy.server}:${deploy.dir}" keyfile="${user.home}/.ssh/id_rsa" passphrase="" />
+	</target>
+
+    <!-- JAVADOC TARGET -->	
+	<target name="javadoc" depends="init">
+		<javadoc doctitle="${ant.project.name} API Specification" bottom="Copyright 2004 UCI/UFRJ." header="${ant.project.name}" destdir="${javadoc.dir}" packagenames="*" windowtitle="${ant.project.name} API" sourcepath="${src.dir}" classpathref="class.path" />
+    </target>
+
+    <!-- CLEAN TARGET  -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+</project>

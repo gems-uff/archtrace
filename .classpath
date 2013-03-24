@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resource"/>
+	<classpathentry kind="src" path="test/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="test/lib/junit3.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/xarchlibs-unstable.20040903.0945.jar"/>
+	<classpathentry kind="lib" path="lib/archstudio-3.0.1050.jar"/>
+	<classpathentry kind="lib" path="lib/menage-2.1.1006.jar"/>
+	<classpathentry kind="lib" path="lib/svnjavahl-1.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/DataMining-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/ganymed.jar"/>
+	<classpathentry kind="lib" path="lib/svnkit.jar"/>
+	<classpathentry kind="lib" path="lib/svnkit-javahl.jar"/>
+	<classpathentry kind="lib" path="lib/svnkitplugin.jar"/>
+	<classpathentry kind="output" path="build"/>
+</classpath>

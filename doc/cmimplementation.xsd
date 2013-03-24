@@ -1,0 +1,74 @@
+<xsd:schema xmlns="http://www.ics.uci.edu/pub/arch/xArch/cmimplementation.xsd"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:archinst="http://www.ics.uci.edu/pub/arch/xArch/instance.xsd"
+            xmlns:archtypes="http://www.ics.uci.edu/pub/arch/xArch/types.xsd"
+            xmlns:archvariants="http://www.ics.uci.edu/pub/arch/xArch/variants.xsd"
+            xmlns:archimpl="http://www.ics.uci.edu/pub/arch/xArch/implementation.xsd"
+            targetNamespace="http://www.ics.uci.edu/pub/arch/xArch/cmimplementation.xsd"
+            elementFormDefault="qualified"
+            attributeFormDefault="qualified">
+
+  <!-- Import namespaces used -->
+  <xsd:import namespace="http://www.ics.uci.edu/pub/arch/xArch/instance.xsd"
+              schemaLocation="http://www.isr.uci.edu/projects/xarchuci/core/instance.xsd"/>
+  <xsd:import namespace="http://www.ics.uci.edu/pub/arch/xArch/types.xsd"
+              schemaLocation="http://www.isr.uci.edu/projects/xarchuci/ext/types.xsd"/>
+  <xsd:import namespace="http://www.ics.uci.edu/pub/arch/xArch/variants.xsd"
+              schemaLocation="http://www.isr.uci.edu/projects/xarchuci/ext/variants.xsd"/>
+  <xsd:import namespace="http://www.ics.uci.edu/pub/arch/xArch/implementation.xsd"
+              schemaLocation="http://www.isr.uci.edu/projects/xarchuci/ext/implementation.xsd"/>
+
+  <xsd:annotation>
+    <xsd:documentation>
+      xArch Configuration Management XML Schema 1.0
+      
+      This schema allows the user to specify the configuration
+      items of a component, connector, or interface type.
+
+      Depends on: {types.xsd, variants.xsd, implementation.xsd}
+        Note: The actual dependency set of this extension is
+        just javaimplementation, but because of XML Schema 
+        1.0's single inheritance model, we also extend variants
+        so that a component/connector type may have both 
+        variants and an implementation.
+
+      Change Log:
+         2004-09-02: Leo Murta [murta@ics.uci.edu, murta@cos.ufrj.br]:
+           Initial Development and validated with XSV
+
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <!--
+    TYPE: ConfigurationManagementImplementation
+
+    The ConfigurationManagementImplementation type contains information about 
+    all configuration items that implement a component, connector or interface type.
+   -->
+  <xsd:complexType name="ConfigurationManagementImplementation">
+    <xsd:complexContent>
+      <xsd:extension base="archimpl:Implementation">
+        <xsd:sequence>
+          <xsd:element name="configurationItem" type="ConfigurationItem"
+                       minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+  <!--
+    TYPE: ConfigurationItem
+
+    The ConfigurationItem type contains the name (relative to the repository) 
+    and the version of a configuration item. Configuration items can be
+    source-code, model, hardware, etc. The repository can have any syntax 
+    (such as svn://..., for software, or a phisical address for hardware).
+   -->
+  <xsd:complexType name="ConfigurationItem">
+    <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute name="version" type="xsd:string"/>
+    <xsd:attribute name="repository" type="xsd:string"/>
+  </xsd:complexType>
+
+</xsd:schema>
