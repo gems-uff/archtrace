@@ -38,8 +38,8 @@ Download
 
 ArchTrace is available under two different editions:
 
-* [Standalone edition](release/ArchTrace.jnlp)
-* [ArchStudio edition](https://github.com/gems-uff/archtrace/tree/master/release/ArchTrace.zip)
+* [Standalone edition](https://github.com/gems-uff/archtrace/raw/master/release/ArchTrace.jnlp)
+* [ArchStudio edition](https://github.com/gems-uff/archtrace/raw/master/release/ArchTrace.zip)
 
 Obs1.: Both editions need Java 5.0.
 
@@ -47,7 +47,7 @@ Obs2.: The standalone edition is deployed using Java Web Start.
 
 Obs3.: The Subversion connection can be done via command line interface (PATH variable configured with "svn.exe") or Java Native Interface.
 
-Obs4.: Some [hooks](https://github.com/gems-uff/archtrace/tree/master/release/hooks.zip) are needed in the subversion repository to allow the execution of "Automatic update" policy, related to configuration items evolution.
+Obs4.: Some [hooks](https://github.com/gems-uff/archtrace/raw/master/release/hooks.zip) are needed in the subversion repository to allow the execution of "Automatic update" policy, related to configuration items evolution.
 
 Included software
 -----------------

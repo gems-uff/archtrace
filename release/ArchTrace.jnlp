@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <!-- JNLP File for ArchTrace --> 
-<jnlp spec="1.0+" codebase="https://github.com/gems-uff/archtrace/tree/master/release" href="ArchTrace.jnlp">
+<jnlp spec="1.0+" codebase="https://github.com/gems-uff/archtrace/raw/master/release" href="ArchTrace.jnlp">
 
     <information>
         <title>ArchTrace</title> 
