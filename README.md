@@ -49,6 +49,11 @@ Obs3.: The Subversion connection can be done via command line interface (PATH va
 
 Obs4.: Some [hooks](https://github.com/gems-uff/archtrace/raw/master/release/hooks.zip) are needed in the subversion repository to allow the execution of "Automatic update" policy, related to configuration items evolution.
 
+Evaluation results
+------------------
+
+We evaluated ArchTrace over the [Odyssey](http://reuse.cos.ufrj.br/site/pt/index.php?option=com_content&task=view&id=20&Itemid=22) project. The raw results are available [here](https://htmlpreview.github.com/?https://github.com/gems-uff/archtrace/blob/master/release/odyssey.html).
+
 Included software
 -----------------
 
